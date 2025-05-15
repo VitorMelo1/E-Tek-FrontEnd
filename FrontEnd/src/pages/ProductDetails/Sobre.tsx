@@ -66,8 +66,9 @@ const Sobre: React.FC = () => {
     }
   }, [produto]);
 
+  // ✅ Correção aqui no cálculo do preço base
   const precoBase = typeof produto.preco === 'string'
-    ? Number(produto.preco.replace(/[^\d,]/g, '').replace(',', '.'))
+    ? parseFloat(produto.preco.replace(/[^\d.]/g, ''))
     : produto.preco || 0;
 
   const totalAcessorios = acessoriosAdicionados.reduce((acc, item) => acc + item.preco * item.quantidade, 0);
@@ -145,7 +146,11 @@ const Sobre: React.FC = () => {
 
             <h1>Base Product Price:</h1>
             <p className={styles.preco}>
-              {typeof produto.preco === 'string' ? produto.preco : `$ ${produto.preco.toFixed(2)}`}
+              {precoBase.toLocaleString('en-US', {
+                style: 'currency',
+                currency: 'USD'
+              })}
+
             </p>
           </div>
         </div>

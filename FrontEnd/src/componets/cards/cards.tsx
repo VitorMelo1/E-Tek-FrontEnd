@@ -1,5 +1,5 @@
-import React from 'react'
-import styles from './Cards.module.scss'
+import React from 'react';
+import styles from './Cards.module.scss';
 
 export interface CardProps {
   id?: number;
@@ -7,10 +7,9 @@ export interface CardProps {
   imagem: string;
   nome: string;
   descricao: string[];
-  preco: string;
+  preco: string | number;
   onBuy?: () => void;
 }
-
 
 const Card: React.FC<CardProps> = ({
   tag,
@@ -20,6 +19,12 @@ const Card: React.FC<CardProps> = ({
   preco,
   onBuy
 }) => {
+  // Formatação real de dólar americano
+  const precoFormatado = Number(preco).toLocaleString('en-US', {
+    style: 'currency',
+    currency: 'USD'
+  });
+
   return (
     <div className={styles.card}>
       {tag && <span className={styles.tag}>{tag}</span>}
@@ -37,7 +42,7 @@ const Card: React.FC<CardProps> = ({
           ))}
         </ul>
 
-        <p className={`${styles.preco} ${styles.text}`}>{preco}</p>
+        <p className={`${styles.preco} ${styles.text}`}>{precoFormatado}</p>
 
         {onBuy && (
           <button
@@ -50,7 +55,7 @@ const Card: React.FC<CardProps> = ({
         )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Card
+export default Card;

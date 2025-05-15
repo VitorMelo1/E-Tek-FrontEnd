@@ -29,20 +29,17 @@ const ProdutosCarousel: React.FC = () => {
             typeof product.description === 'string'
               ? product.description.replace(/\\n/g, '\n').split('\n')
               : Array.isArray(product.description)
-                ? product.description
-                : [String(product.description)];
+              ? product.description
+              : [String(product.description)];
 
-          const formattedPrice = Number(product.price).toLocaleString('en-US', {
-            style: 'currency',
-            currency: 'USD',
-          });
+          const precoNumerico = Number(product.price);
 
           const productCard: CardProps = {
             tag: product.tag || '',
             imagem: product.image,
             nome: product.name,
             descricao: formattedDescription,
-            preco: formattedPrice,
+            preco: precoNumerico,
             id: product.id,
             onBuy: () =>
               navigate('/sobre', {
@@ -50,7 +47,7 @@ const ProdutosCarousel: React.FC = () => {
                   imagem: product.image,
                   nome: product.name,
                   descricao: formattedDescription,
-                  preco: formattedPrice,
+                  preco: precoNumerico,
                   id: product.id
                 }
               })
