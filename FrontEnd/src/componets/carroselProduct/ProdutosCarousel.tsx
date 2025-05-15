@@ -10,8 +10,7 @@ const ProdutosCarousel: React.FC = () => {
   const [error, setError] = useState('');
   const itemsPerPage = 3;
   const navigate = useNavigate();
-  const slideWidth = 400 + 20;
-
+  const slideWidth = 400 + 20; // 400px for card width + 20px for margin
   useEffect(() => {
     const fetchProducts = async () => {
       try {
