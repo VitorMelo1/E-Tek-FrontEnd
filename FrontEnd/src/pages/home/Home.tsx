@@ -18,11 +18,6 @@ const Home: React.FC = () => {
           <hr className={styles.line} />
           <ProdutosCarousel />
         </section>
-
-        <section className={`${styles.acessorios} ${styles.card}`}>
-          <h2 className={styles.Title}>{t("accessories")}</h2>
-          <hr className={styles.line} />
-        </section>
       </main>
     </div>
   );
