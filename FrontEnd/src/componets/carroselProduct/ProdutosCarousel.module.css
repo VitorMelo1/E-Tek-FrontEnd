@@ -9,6 +9,7 @@
 }
 
 .carouselViewport {
+  padding: 10px;
   overflow: hidden;
   width: 100%;
 }
