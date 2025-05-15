@@ -1,0 +1,172 @@
+@import url("https://fonts.googleapis.com/css2?family=Fanwood+Text&display=swap");
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: "Fanwood Text", sans-serif;
+  color: #FFFFFF;
+}
+
+.TitleSobre_Produtos {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #00CC00;
+}
+
+.section {
+  margin-bottom: 2rem;
+}
+
+.topoProduto {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.topoProduto h2 {
+  color: #00CC00;
+}
+
+.card,
+.cardAcessorio {
+  display: flex;
+  background: #292A2E;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-top: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  align-items: center;
+  gap: 1rem;
+}
+.card img,
+.cardAcessorio img {
+  width: 80px;
+  border-radius: 8px;
+}
+.card div,
+.cardAcessorio div {
+  flex: 1;
+}
+.card div h4,
+.cardAcessorio div h4 {
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+}
+.card div p,
+.cardAcessorio div p {
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.btnRemoverProduto,
+.btnRemoverAcessorio {
+  background: linear-gradient(to right, #e20a0a, #e55006);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.btnRemoverProduto:hover,
+.btnRemoverAcessorio:hover {
+  background: linear-gradient(to right, #e20a0a, #e55006);
+  transform: scale(1.05);
+}
+
+.total {
+  text-align: center;
+  margin-top: 2rem;
+}
+.total h2 {
+  color: #00CC00;
+  margin-bottom: 0.5rem;
+}
+.total p {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #009900;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.actions button {
+  padding: 0.8rem 2rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.actions button:hover {
+  transform: scale(1.05);
+}
+.actions .primary {
+  background: linear-gradient(to right, #28a745, #218838);
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.actions .primary:hover {
+  background: linear-gradient(to right, #2ecc71, #27ae60);
+  transform: scale(1.05);
+}
+.actions .secondary {
+  background: transparent;
+  border: 2px solid #00CC00;
+  color: #00CC00;
+}
+.actions .secondary:hover {
+  background-color: rgba(107, 225, 164, 0.1);
+}
+
+.emptyCart {
+  text-align: center;
+  margin-top: 5rem;
+}
+.emptyCart img {
+  width: 100px;
+  opacity: 0.7;
+  margin-bottom: 1rem;
+}
+.emptyCart h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: #00CC00;
+}
+.emptyCart p {
+  font-size: 1rem;
+  color: white;
+  margin-bottom: 1.5rem;
+}
+.emptyCart button {
+  background: linear-gradient(to right, #2ecc71, #27ae60);
+  color: white;
+  border: none;
+  padding: 0.7rem 2rem;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.emptyCart button:hover {
+  transform: scale(1.05);
+}/*# sourceMappingURL=cart.module.css.map */

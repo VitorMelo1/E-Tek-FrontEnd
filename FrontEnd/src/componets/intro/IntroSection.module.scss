@@ -1,0 +1,100 @@
+@use "../../styles/variables.module.scss" as *;
+@use "../../styles/mixins.module.scss" as *;
+
+.intro {
+  @include display-flex(row, center, center);
+  gap: 120px;
+  border-radius: 10px;
+  margin-right: 50px;
+}
+
+.textContent {
+  position: relative;
+  font-family: $font-family;
+  font-size: $font-size;
+  line-height: 1.6;
+  max-width: 500px;
+  padding-left: 40px;
+
+  background: linear-gradient(to right, $white 10%, $green-mid 50%, $white 90%);
+  background-size: 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textGlow 3s ease-in-out infinite;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    height: 200px;
+    width: 95px;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.05), transparent);
+    animation: textGlow 3s ease-in-out infinite;
+    border-left: 1px solid $white;
+    pointer-events: none;
+  }
+}
+
+.buttonContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.button {
+  background-color: transparent;
+  border: 2px solid $green-mid;
+  color: $white;
+  text-shadow: $green-mid 0px 0px 5px;
+  padding: 10px 20px;
+  font-family: $font-family;
+  font-size: $font-size;
+  border-radius: 25px;
+  padding: 5px 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: $green-mid;
+    color: black;
+    transform: scale(1.05);
+  }
+}
+
+.logoWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.logoGlow {
+  width: 100px;
+  height: auto;
+  filter: drop-shadow(0 4px 4px $drop-shadow-color-img);
+}
+
+// Animações locais
+@keyframes pulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 15px $gren-bg);
+  }
+  50% {
+    filter: drop-shadow(0 0 35px lighten($gren-bg, 10%));
+  }
+}
+
+@keyframes textGlow {
+  0%, 100% {
+    background-position: 0%;
+    filter: drop-shadow(0 0 5px transparent);
+  }
+  50% {
+    background-position: 100%;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.6));
+  }
+}

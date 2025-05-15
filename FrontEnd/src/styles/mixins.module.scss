@@ -1,0 +1,30 @@
+@use "./variables.module.scss" as *;
+
+@mixin header-bg() {
+  background: linear-gradient(
+    to right,
+    $green-dark 0%,
+    $green-mid 50%,
+    $green-dark 100%
+  );
+  color: black;
+}
+
+@mixin display-flex($direction: row, $justify: center, $align: center) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin splash-hover($color, $duration: 1.5s) {
+  background-image: radial-gradient(circle, $color 0%, $color 100%);
+  background-size: 0%;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: background-size $duration ease-out;
+
+  &:hover {
+    background-size: 250%;
+  }
+}

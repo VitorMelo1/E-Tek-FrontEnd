@@ -1,0 +1,96 @@
+@import url("https://fonts.googleapis.com/css2?family=Fanwood+Text&display=swap");
+.intro {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 120px;
+  border-radius: 10px;
+  margin-right: 50px;
+}
+
+.textContent {
+  position: relative;
+  font-family: "Fanwood Text", sans-serif;
+  font-size: 32px;
+  line-height: 1.6;
+  max-width: 500px;
+  padding-left: 40px;
+  background: linear-gradient(to right, #FFFFFF 10%, #00CC00 50%, #FFFFFF 90%);
+  background-size: 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textGlow 3s ease-in-out infinite;
+}
+.textContent::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  height: 200px;
+  width: 95px;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.05), transparent);
+  animation: textGlow 3s ease-in-out infinite;
+  border-left: 1px solid #FFFFFF;
+  pointer-events: none;
+}
+
+.buttonContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.button {
+  background-color: transparent;
+  border: 2px solid #00CC00;
+  color: #FFFFFF;
+  text-shadow: #00CC00 0px 0px 5px;
+  padding: 10px 20px;
+  font-family: "Fanwood Text", sans-serif;
+  font-size: 32px;
+  border-radius: 25px;
+  padding: 5px 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.button:hover {
+  background-color: #00CC00;
+  color: black;
+  transform: scale(1.05);
+}
+
+.logoWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.logoGlow {
+  width: 100px;
+  height: auto;
+  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.438));
+}
+
+@keyframes pulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 15px #00CC00);
+  }
+  50% {
+    filter: drop-shadow(0 0 35px lime);
+  }
+}
+@keyframes textGlow {
+  0%, 100% {
+    background-position: 0%;
+    filter: drop-shadow(0 0 5px transparent);
+  }
+  50% {
+    background-position: 100%;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.6));
+  }
+}/*# sourceMappingURL=IntroSection.module.css.map */

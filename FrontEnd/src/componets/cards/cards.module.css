@@ -1,0 +1,90 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 360px;
+  background: #1e1e1e;
+  border: 1px solid #2ecc71;
+  border-radius: 12px;
+  padding: 20px;
+  color: #ffffff;
+  position: relative;
+  margin-right: 32px;
+  box-shadow: 0 4px 12px rgba(0, 255, 0, 0.1);
+  transition: transform 0.2s;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0, 255, 0, 0.15);
+}
+
+.tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #2c2c2c;
+  border-radius: 8px;
+  padding: 4px 8px;
+  font-size: 0.75rem;
+  color: #2ecc71;
+  border: 1px solid #2ecc71;
+}
+
+.imageWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  margin: 10px 0;
+}
+.imageWrapper img {
+  max-width: 100%;
+  max-height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+.info .nome {
+  color: #2ecc71;
+  font-size: 1.25rem;
+  margin: 0;
+}
+.info .descricao {
+  margin: 0;
+  padding-left: 16px;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+.info .descricao li {
+  list-style-type: disc;
+  margin-bottom: 4px;
+}
+.info .text {
+  margin-bottom: 10px;
+}
+.info .preco {
+  color: #2ecc71;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+.info .botao {
+  margin-top: auto;
+  background: transparent;
+  border: 1.5px solid #2ecc71;
+  color: #2ecc71;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.info .botao:hover {
+  background-color: #2ecc71;
+  color: #1e1e1e;
+}/*# sourceMappingURL=cards.module.css.map */

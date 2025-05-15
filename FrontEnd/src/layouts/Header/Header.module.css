@@ -1,0 +1,149 @@
+@import url("https://fonts.googleapis.com/css2?family=Fanwood+Text&display=swap");
+.header {
+  background: linear-gradient(to right, #009900 0%, #00CC00 50%, #009900 100%);
+  color: black;
+  width: 100%;
+  height: 90px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.logoImage {
+  filter: drop-shadow(-5px 4px 5px rgba(0, 0, 0, 0.25));
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 60px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.navList {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 35px;
+  width: auto;
+}
+
+.navItem {
+  text-decoration: none;
+  color: #000000;
+  font-size: 35px;
+  font-family: "Fanwood Text", sans-serif;
+  text-shadow: -5px 4px 5px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  transition: color 0.4s ease-in-out, text-shadow 0.4s ease-in-out, transform 0.3s ease-in-out;
+}
+.navItem:hover {
+  color: #FFFFFF;
+  text-shadow: -6px 5px 10px rgba(51, 51, 51, 0.25);
+  transform: scale(1.05);
+}
+
+.searchWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.searchInput {
+  width: 389px;
+  height: 40px;
+  border-radius: 15px;
+  padding-left: 40px;
+  font-size: 20px;
+  font-family: "Fanwood Text", sans-serif;
+  color: black;
+  background-color: #FFFFFF;
+  outline: none;
+  border: none;
+}
+.searchInput::-moz-placeholder {
+  color: gray;
+}
+.searchInput::placeholder {
+  color: gray;
+}
+
+.icon {
+  position: absolute;
+  left: 12px;
+  width: 20px;
+  height: 20px;
+}
+
+.cartWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border-radius: 50%;
+}
+
+.cartLink {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: radial-gradient(circle, #ffcc00 0%, #ffcc00 100%);
+  background-size: 0%;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: background-size 10s ease-out;
+  background-color: #FFFFFF;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-family: "Fanwood Text", sans-serif;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.cartLink:hover {
+  background-size: 250%;
+}
+.cartLink:hover {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
+}
+
+.cartIcon {
+  width: 32px;
+  height: 32px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  filter: brightness(0);
+  transition: transform 0.2s ease-in-out;
+}
+.cartLink:hover .cartIcon {
+  transform: scale(1.1);
+}
+
+.userWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  margin-left: auto;
+}
+.userWrapper .userName {
+  font-size: 25px;
+  font-family: "Fanwood Text", sans-serif;
+  text-shadow: -5px 4px 5px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  transition: color 0.4s ease-in-out, text-shadow 0.4s ease-in-out, transform 0.3s ease-in-out;
+}
+.userWrapper .userIcon {
+  cursor: pointer;
+}/*# sourceMappingURL=Header.module.css.map */

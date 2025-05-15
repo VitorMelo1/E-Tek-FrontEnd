@@ -1,0 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Fanwood+Text&display=swap");
+.main {
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card {
+  background-color: #292A2E;
+  color: #FFFFFF;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  padding: 100px 20px;
+  margin-bottom: 30px;
+}
+
+.products {
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 30px;
+}
+
+.Title {
+  font-size: 48px;
+  font-family: "Fanwood Text", sans-serif;
+  margin-bottom: 15px;
+}
+
+.line {
+  height: 3px;
+  background-color: #00CC00;
+  border: none;
+  margin: 15px 0;
+}/*# sourceMappingURL=Home.module.css.map */

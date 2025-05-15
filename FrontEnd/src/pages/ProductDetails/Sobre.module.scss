@@ -1,0 +1,283 @@
+@use "../../styles/variables.module.scss" as *;
+@use "../../styles/mixins.module.scss" as *;
+
+.container {
+  padding: 2rem;
+  background-color: $boddy-color;
+  color: $white;
+  font-family: $font-family;
+}
+
+.linhaPrincipal {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+// Produto principal (esquerda)
+.produto {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  .imagemProduto {
+    width: auto;
+    max-height: 350px;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+
+  .descricaoBloco {
+    background-color: $card-color;
+    padding: 2rem;
+    border-radius: 12px;
+    width: 400px;
+    box-shadow: 0 0 15px $drop-shadow-color;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    .preco {
+      font-size: 1.8rem;
+      color: $green-mid;
+      font-weight: bold;
+      margin-top: auto;
+    }
+  }
+}
+
+.TitleNameProduct {
+  font-size: 2.2rem;
+  color: $green-mid;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+// 🔰 NOVO BOX: Descrição do produto
+.boxDescricao {
+  background-color: darken($card-color, 3%);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-top: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
+  h2 {
+    font-size: 1.2rem;
+    color: $green-mid;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 0.5rem;
+  }
+}
+
+.textoDescricao {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  p {
+    margin: 0;
+    font-size: 1rem;
+    color: $white;
+    line-height: 1.6;
+  }
+}
+
+// Bloco dos acessórios (direita)
+.acessorios {
+  width: 58%;
+
+  h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: $green-mid;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 1rem;
+  }
+
+  .card {
+    background-color: $card-color;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px $drop-shadow-color;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    img {
+      width: 80px;
+      margin-bottom: 0.5rem;
+      filter: drop-shadow(0 1px 4px $drop-shadow-color-img);
+    }
+
+    h3 {
+      font-size: 1rem;
+      margin: 0.5rem 0;
+    }
+
+    p {
+      font-size: 0.85rem;
+      margin-bottom: 0.5rem;
+    }
+
+    span {
+      font-weight: bold;
+      color: $green-mid;
+      margin-bottom: 0.5rem;
+    }
+
+    button {
+      background-color: $green-mid;
+      color: $white;
+      border: none;
+      padding: 0.4rem 0.8rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+
+      &:hover {
+        background-color: $green-dark;
+      }
+    }
+  }
+}
+
+// Acessórios adicionados
+.adicionados {
+  margin-top: 2.5rem;
+  padding: 1.5rem;
+  background-color: darken($card-color, 2%);
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
+
+  h3 {
+    font-size: 1.4rem;
+    color: $green-mid;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 0.5rem;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.03);
+      padding: 0.6rem 1rem;
+      border-radius: 6px;
+      font-size: 1rem;
+      color: $white;
+
+      &:nth-child(odd) {
+        background-color: rgba(255, 255, 255, 0.05);
+      }
+
+      span {
+        font-weight: bold;
+        color: $green-mid;
+      }
+    }
+  }
+}
+.quantidade{
+  margin: 0 10px;
+}
+.botoes {
+  display: flex;
+  gap: 0.5rem;
+  margin-left: auto;
+
+  button {
+    background-color: $green-mid;
+    border: none;
+    padding: 0.3rem 0.6rem;
+    color: $white;
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+
+    &:hover {
+      background-color: $green-dark;
+    }
+  }
+}
+.subtitulo{
+  font-size: 1.2rem;
+  color: $green-mid;
+  margin-bottom: 0.5rem;
+}
+.precoAcessorio{
+  font-size: 22px;
+  margin-left: 15px;
+}
+
+// Bloco do total + botão de compra
+.total {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid $card-color;
+  text-align: center;
+
+  h3 {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+    color: $green-mid;
+  }
+
+  p {
+    font-size: 2rem;
+    font-weight: bold;
+    color: $green-dark;
+  }
+
+  .botaoComprar {
+    margin-top: 1rem;
+    padding: 0.8rem 2rem;
+    background-color: $green-mid;
+    color: $white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+
+    &:hover {
+      background-color: $green-dark;
+    }
+  }
+}
+
+// Responsividade
+@media (max-width: 960px) {
+  .linhaPrincipal {
+    flex-direction: column;
+  }
+
+  .produto,
+  .acessorios {
+    width: 100%;
+  }
+
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+}

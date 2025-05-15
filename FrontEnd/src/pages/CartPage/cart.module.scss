@@ -1,0 +1,188 @@
+@use "../../styles/variables.module.scss" as *;
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: $font-family;
+  color: $white;
+}
+
+.TitleSobre_Produtos{
+
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: $green-mid;
+
+}
+
+.section {
+  margin-bottom: 2rem;
+}
+
+.topoProduto {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  h2 {
+    color: $green-mid;
+  }
+}
+
+.card,
+.cardAcessorio {
+  display: flex;
+  background: $card-color;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-top: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  align-items: center;
+  gap: 1rem;
+
+  img {
+    width: 80px;
+    border-radius: 8px;
+  }
+
+  div {
+    flex: 1;
+
+    h4 {
+      font-size: 1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    p {
+      font-size: 0.9rem;
+      margin: 0;
+    }
+  }
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.btnRemoverProduto,
+.btnRemoverAcessorio {
+ background: linear-gradient(to right, #e20a0a, #e55006);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: linear-gradient(to right, #e20a0a, #e55006);
+    transform: scale(1.05);
+  }
+}
+
+.total {
+  text-align: center;
+  margin-top: 2rem;
+
+  h2 {
+    color: $green-mid;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    font-size: 2rem;
+    font-weight: bold;
+    color: $green-dark;
+  }
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+
+  button {
+    padding: 0.8rem 2rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  .primary {
+    background: linear-gradient(to right, #28a745, #218838);
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: linear-gradient(to right, #2ecc71, #27ae60);
+      transform: scale(1.05);
+    }
+  }
+
+  .secondary {
+    background: transparent;
+    border: 2px solid $green-mid;
+    color: $green-mid;
+
+    &:hover {
+      background-color: rgba(107, 225, 164, 0.1);
+    }
+  }
+}
+
+.emptyCart {
+  text-align: center;
+  margin-top: 5rem;
+
+  img {
+    width: 100px;
+    opacity: 0.7;
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: $green-mid;
+  }
+
+  p {
+    font-size: 1rem;
+    color: lighten($white, 15%);
+    margin-bottom: 1.5rem;
+  }
+
+  button {
+     background: linear-gradient(to right, #2ecc71, #27ae60);
+    color: white;
+    border: none;
+    padding: 0.7rem 2rem;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}

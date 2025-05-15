@@ -1,0 +1,251 @@
+@import url("https://fonts.googleapis.com/css2?family=Fanwood+Text&display=swap");
+.container {
+  padding: 2rem;
+  background-color: #1C1D22;
+  color: #FFFFFF;
+  font-family: "Fanwood Text", sans-serif;
+}
+
+.linhaPrincipal {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.produto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.produto .imagemProduto {
+  width: auto;
+  max-height: 350px;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+.produto .descricaoBloco {
+  background-color: #292A2E;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 400px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.produto .descricaoBloco .preco {
+  font-size: 1.8rem;
+  color: #00CC00;
+  font-weight: bold;
+  margin-top: auto;
+}
+
+.TitleNameProduct {
+  font-size: 2.2rem;
+  color: #00CC00;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.boxDescricao {
+  background-color: #222326;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-top: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.boxDescricao h2 {
+  font-size: 1.2rem;
+  color: #00CC00;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 0.5rem;
+}
+
+.textoDescricao {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.textoDescricao p {
+  margin: 0;
+  font-size: 1rem;
+  color: #FFFFFF;
+  line-height: 1.6;
+}
+
+.acessorios {
+  width: 58%;
+}
+.acessorios h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #00CC00;
+}
+.acessorios .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 1rem;
+}
+.acessorios .card {
+  background-color: #292A2E;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.acessorios .card img {
+  width: 80px;
+  margin-bottom: 0.5rem;
+  filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.438));
+}
+.acessorios .card h3 {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+}
+.acessorios .card p {
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+.acessorios .card span {
+  font-weight: bold;
+  color: #00CC00;
+  margin-bottom: 0.5rem;
+}
+.acessorios .card button {
+  background-color: #00CC00;
+  color: #FFFFFF;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.acessorios .card button:hover {
+  background-color: #009900;
+}
+
+.adicionados {
+  margin-top: 2.5rem;
+  padding: 1.5rem;
+  background-color: #242529;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
+}
+.adicionados h3 {
+  font-size: 1.4rem;
+  color: #00CC00;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 0.5rem;
+}
+.adicionados ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.adicionados ul li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.03);
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  color: #FFFFFF;
+}
+.adicionados ul li:nth-child(odd) {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+.adicionados ul li span {
+  font-weight: bold;
+  color: #00CC00;
+}
+
+.quantidade {
+  margin: 0 10px;
+}
+
+.botoes {
+  display: flex;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+.botoes button {
+  background-color: #00CC00;
+  border: none;
+  padding: 0.3rem 0.6rem;
+  color: #FFFFFF;
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.botoes button:hover {
+  background-color: #009900;
+}
+
+.subtitulo {
+  font-size: 1.2rem;
+  color: #00CC00;
+  margin-bottom: 0.5rem;
+}
+
+.precoAcessorio {
+  font-size: 22px;
+  margin-left: 15px;
+}
+
+.total {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid #292A2E;
+  text-align: center;
+}
+.total h3 {
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+  color: #00CC00;
+}
+.total p {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #009900;
+}
+.total .botaoComprar {
+  margin-top: 1rem;
+  padding: 0.8rem 2rem;
+  background-color: #00CC00;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.total .botaoComprar:hover {
+  background-color: #009900;
+}
+
+@media (max-width: 960px) {
+  .linhaPrincipal {
+    flex-direction: column;
+  }
+  .produto,
+  .acessorios {
+    width: 100%;
+  }
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+}/*# sourceMappingURL=Sobre.module.css.map */
