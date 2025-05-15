@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import styles from './Sobre.module.scss';
-import imgAcc from '../../assets/ImgAcc/img';
-import img from '../../assets/ImgProducts/img';
 
 interface Acessorio {
   nome: string;
@@ -12,6 +10,7 @@ interface Acessorio {
 }
 
 interface ProdutoBase {
+  id: number;
   nome: string;
   preco: string | number;
   descricao: string[];
@@ -28,17 +27,6 @@ interface AcessorioCarrinho extends Acessorio {
   quantidade: number;
 }
 
-const listaAcessorios: Acessorio[] = [
-  { nome: "Controle sem fio DualSense", descricao: "Controle com feedback tátil, gatilhos adaptáveis e microfone embutido.", preco: 449, imagem: imgAcc.Controle },
-  { nome: "Headset gamer (P2/USB)", descricao: "Qualidade de som imersiva com entrada P2 ou conexão USB.", preco: 299, imagem: imgAcc.Headseat },
-  { nome: "Base de carregamento", descricao: "Carrega até dois controles simultaneamente.", preco: 229, imagem: imgAcc.Base },
-  { nome: "Suporte vertical", descricao: "Mantém o PS5 estável na vertical.", preco: 99, imagem: img.PS5 },
-  { nome: "SSD NVMe", descricao: "Expansão interna com velocidade ultrarrápida.", preco: 899, imagem: imgAcc.SSD },
-  { nome: "HD externo", descricao: "Armazenamento adicional para jogos.", preco: 499, imagem: imgAcc.HD },
-  { nome: "Volante e pedal", descricao: "Ideal para jogos de corrida.", preco: 1499, imagem: imgAcc.Volante },
-  { nome: "Capa protetora", descricao: "Protege contra poeira e arranhões.", preco: 79, imagem: imgAcc.Capa }
-];
-
 const Sobre: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -50,11 +38,9 @@ const Sobre: React.FC = () => {
   useEffect(() => {
     const fetchAcessoriosDoProduto = async () => {
       try {
-        const response = await fetch('http://localhost:8000/api/accessories/');
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/accessories/`);
+        if (!response.ok) throw new Error('Erro ao buscar acessórios');
         const data = await response.json();
-
-        console.log("🔍 Acessórios da API:", data);
-        console.log("🟢 Produto atual:", produto.nome);
 
         const relacionados = data
           .filter((item: any) =>
@@ -69,10 +55,9 @@ const Sobre: React.FC = () => {
             imagem: item.image || 'https://via.placeholder.com/80'
           }));
 
-        console.log("✅ Acessórios compatíveis:", relacionados);
         setAcessoriosAPI(relacionados);
       } catch (error) {
-        console.error('❌ Erro ao buscar acessórios da API:', error);
+        console.error('❌ Erro ao buscar acessórios:', error);
       }
     };
 
@@ -168,19 +153,16 @@ const Sobre: React.FC = () => {
         <div className={styles.acessorios}>
           <h2>Acessórios compatíveis</h2>
 
-          {acessoriosAPI.length > 0 && (
+          {acessoriosAPI.length > 0 ? (
             <>
               <h3 className={styles.subtitulo}>Recomendados para este produto</h3>
               <div className={styles.grid}>
                 {acessoriosAPI.map(renderCard)}
               </div>
             </>
+          ) : (
+            <p>Nenhum acessório compatível encontrado.</p>
           )}
-
-          <h3 className={styles.subtitulo}>Outros acessórios</h3>
-          <div className={styles.grid}>
-            {listaAcessorios.map(renderCard)}
-          </div>
 
           {acessoriosAdicionados.length > 0 && (
             <div className={styles.adicionados}>
