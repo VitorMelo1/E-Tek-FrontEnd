@@ -4,81 +4,79 @@ import styles from './ProdutosCarousel.module.scss';
 import Card, { CardProps } from '../cards/cards';
 
 const ProdutosCarousel: React.FC = () => {
-  const [produtos, setProdutos] = useState<CardProps[]>([]);
+  const [products, setProducts] = useState<CardProps[]>([]);
   const [page, setPage] = useState(0);
   const [loading, setLoading] = useState(true);
-  const [erro, setErro] = useState('');
+  const [error, setError] = useState('');
   const itemsPerPage = 2;
   const navigate = useNavigate();
   const slideWidth = 550 + 20;
 
   useEffect(() => {
-    const fetchProdutos = async () => {
+    const fetchProducts = async () => {
       try {
         const response = await fetch(`${import.meta.env.VITE_API_URL}/devices/`);
 
-
         if (!response.ok) {
           const errorText = await response.text();
-          throw new Error(`Erro ${response.status}: ${errorText}`);
+          throw new Error(`Error ${response.status}: ${errorText}`);
         }
 
         const data = await response.json();
 
-        const produtosComOnBuy: CardProps[] = data.map((produto: any) => {
-          const descricaoFormatada =
-            typeof produto.description === 'string'
-              ? produto.description.replace(/\\n/g, '\n').split('\n')
-              : Array.isArray(produto.description)
-                ? produto.description
-                : [String(produto.description)];
+        const productsWithOnBuy: CardProps[] = data.map((product: any) => {
+          const formattedDescription =
+            typeof product.description === 'string'
+              ? product.description.replace(/\\n/g, '\n').split('\n')
+              : Array.isArray(product.description)
+                ? product.description
+                : [String(product.description)];
 
-          const precoFormatado = Number(produto.price).toLocaleString('pt-BR', {
+          const formattedPrice = Number(product.price).toLocaleString('en-US', {
             style: 'currency',
-            currency: 'BRL',
+            currency: 'USD',
           });
 
-          const produtoCard: CardProps = {
-            tag: produto.tag || '',
-            imagem: produto.image,
-            nome: produto.name,
-            descricao: descricaoFormatada,
-            preco: precoFormatado,
-            id: produto.id,
+          const productCard: CardProps = {
+            tag: product.tag || '',
+            imagem: product.image,
+            nome: product.name,
+            descricao: formattedDescription,
+            preco: formattedPrice,
+            id: product.id,
             onBuy: () =>
               navigate('/sobre', {
                 state: {
-                  imagem: produto.image,
-                  nome: produto.name,
-                  descricao: descricaoFormatada,
-                  preco: precoFormatado,
-                  id: produto.id
+                  imagem: product.image,
+                  nome: product.name,
+                  descricao: formattedDescription,
+                  preco: formattedPrice,
+                  id: product.id
                 }
               })
           };
 
-
-          return produtoCard;
+          return productCard;
         });
 
-        setProdutos(produtosComOnBuy);
+        setProducts(productsWithOnBuy);
       } catch (error: any) {
-        setErro(`Erro ao carregar produtos: ${error.message || 'Erro desconhecido'}`);
-        console.error('[Erro ao buscar produtos]:', error);
+        setError(`Failed to load products: ${error.message || 'Unknown error'}`);
+        console.error('[Product fetch error]:', error);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchProdutos();
+    fetchProducts();
   }, [navigate]);
 
-  const totalPages = Math.ceil(produtos.length / itemsPerPage);
+  const totalPages = Math.ceil(products.length / itemsPerPage);
   const prevPage = () => setPage(p => Math.max(p - 1, 0));
   const nextPage = () => setPage(p => Math.min(p + 1, totalPages - 1));
 
-  if (loading) return <p className={styles.loading}>Carregando produtos...</p>;
-  if (erro) return <p className={styles.erro}>{erro}</p>;
+  if (loading) return <p className={styles.loading}>Loading products...</p>;
+  if (error) return <p className={styles.erro}>{error}</p>;
 
   return (
     <div className={styles.carouselWrapper}>
@@ -88,12 +86,12 @@ const ProdutosCarousel: React.FC = () => {
         <div
           className={styles.slider}
           style={{
-            width: `${produtos.length * slideWidth}px`,
+            width: `${products.length * slideWidth}px`,
             transform: `translateX(-${page * itemsPerPage * slideWidth}px)`,
             transition: 'transform 0.3s ease'
           }}
         >
-          {produtos.map((p) => (
+          {products.map((p) => (
             <Card key={p.id} {...p} />
           ))}
         </div>

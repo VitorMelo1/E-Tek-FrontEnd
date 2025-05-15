@@ -39,7 +39,7 @@ const Sobre: React.FC = () => {
     const fetchAcessoriosDoProduto = async () => {
       try {
         const response = await fetch(`${import.meta.env.VITE_API_URL}/accessories/`);
-        if (!response.ok) throw new Error('Erro ao buscar acessórios');
+        if (!response.ok) throw new Error('Failed to fetch accessories');
         const data = await response.json();
 
         const relacionados = data
@@ -50,14 +50,14 @@ const Sobre: React.FC = () => {
           )
           .map((item: any) => ({
             nome: item.name,
-            descricao: item.description || 'Acessório recomendado para o produto.',
+            descricao: item.description || 'Recommended accessory for this product.',
             preco: parseFloat(item.price) || 0,
             imagem: item.image || 'https://via.placeholder.com/80'
           }));
 
         setAcessoriosAPI(relacionados);
       } catch (error) {
-        console.error('❌ Erro ao buscar acessórios:', error);
+        console.error('❌ Failed to fetch accessories:', error);
       }
     };
 
@@ -121,8 +121,8 @@ const Sobre: React.FC = () => {
       <img src={item.imagem} alt={item.nome} />
       <h3>{item.nome}</h3>
       <p>{item.descricao}</p>
-      <span>R$ {item.preco.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</span>
-      <button onClick={() => adicionarAcessorio(item)}>Adicionar</button>
+      <span>$ {item.preco.toLocaleString('en-US', { minimumFractionDigits: 2 })}</span>
+      <button onClick={() => adicionarAcessorio(item)}>Add</button>
     </div>
   );
 
@@ -135,7 +135,7 @@ const Sobre: React.FC = () => {
             <h1 className={styles.TitleNameProduct}>{produto.nome}</h1>
 
             <div className={styles.boxDescricao}>
-              <h2>Descrição do produto</h2>
+              <h2>Product Description</h2>
               <div className={styles.textoDescricao}>
                 {produto.descricao.map((linha, index) => (
                   <p key={index}>{linha}</p>
@@ -143,36 +143,36 @@ const Sobre: React.FC = () => {
               </div>
             </div>
 
-            <h1>Valor Do Produto Base:</h1>
+            <h1>Base Product Price:</h1>
             <p className={styles.preco}>
-              {typeof produto.preco === 'string' ? produto.preco : `R$ ${produto.preco.toFixed(2)}`}
+              {typeof produto.preco === 'string' ? produto.preco : `$ ${produto.preco.toFixed(2)}`}
             </p>
           </div>
         </div>
 
         <div className={styles.acessorios}>
-          <h2>Acessórios compatíveis</h2>
+          <h2>Compatible Accessories</h2>
 
           {acessoriosAPI.length > 0 ? (
             <>
-              <h3 className={styles.subtitulo}>Recomendados para este produto</h3>
+              <h3 className={styles.subtitulo}>Recommended for this product</h3>
               <div className={styles.grid}>
                 {acessoriosAPI.map(renderCard)}
               </div>
             </>
           ) : (
-            <p>Nenhum acessório compatível encontrado.</p>
+            <p>No compatible accessories found.</p>
           )}
 
           {acessoriosAdicionados.length > 0 && (
             <div className={styles.adicionados}>
-              <h3>Acessórios adicionados:</h3>
+              <h3>Added Accessories:</h3>
               <ul>
                 {acessoriosAdicionados.map((item, index) => (
                   <li key={index}>
                     <span>{item.nome}</span>
                     <span className={styles.precoAcessorio}>
-                      {item.quantidade}x R$ {item.preco.toLocaleString('pt-BR')} = R$ {(item.quantidade * item.preco).toLocaleString('pt-BR')}
+                      {item.quantidade}x $ {item.preco.toLocaleString('en-US')} = $ {(item.quantidade * item.preco).toLocaleString('en-US')}
                     </span>
                     <div className={styles.botoes}>
                       <button onClick={() => removerAcessorio(item)}>-</button>
@@ -185,10 +185,10 @@ const Sobre: React.FC = () => {
           )}
 
           <div className={styles.total}>
-            <h3>Total da compra:</h3>
-            <p>R$ {totalGeral.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</p>
+            <h3>Total:</h3>
+            <p>$ {totalGeral.toLocaleString('en-US', { minimumFractionDigits: 2 })}</p>
             <button className={styles.botaoComprar} onClick={irParaCarrinho}>
-              Comprar agora
+              Buy Now
             </button>
           </div>
         </div>

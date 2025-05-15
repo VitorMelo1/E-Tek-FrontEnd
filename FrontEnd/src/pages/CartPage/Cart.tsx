@@ -24,66 +24,66 @@ interface ProdutoCarrinho {
 
 const Cart: React.FC = () => {
   const navigate = useNavigate();
-  const [carrinho, setCarrinho] = useState<ProdutoCarrinho[]>([]);
+  const [cart, setCart] = useState<ProdutoCarrinho[]>([]);
 
   useEffect(() => {
-    const dadosSalvos = localStorage.getItem('carrinhoCompleto');
-    if (dadosSalvos) {
-      setCarrinho(JSON.parse(dadosSalvos));
+    const savedData = localStorage.getItem('carrinhoCompleto');
+    if (savedData) {
+      setCart(JSON.parse(savedData));
     }
   }, []);
 
-  const salvarCarrinho = (novoCarrinho: ProdutoCarrinho[]) => {
-    setCarrinho(novoCarrinho);
-    localStorage.setItem('carrinhoCompleto', JSON.stringify(novoCarrinho));
+  const saveCart = (newCart: ProdutoCarrinho[]) => {
+    setCart(newCart);
+    localStorage.setItem('carrinhoCompleto', JSON.stringify(newCart));
   };
 
-  const removerProduto = (index: number) => {
-    const novoCarrinho = carrinho.filter((_, i) => i !== index);
-    salvarCarrinho(novoCarrinho);
+  const removeProduct = (index: number) => {
+    const newCart = cart.filter((_, i) => i !== index);
+    saveCart(newCart);
   };
 
-  const removerAcessorio = (produtoIndex: number, acessorioIndex: number) => {
-    const novoCarrinho = [...carrinho];
-    const acessorios = [...novoCarrinho[produtoIndex].acessorios];
-    acessorios.splice(acessorioIndex, 1);
+  const removeAccessory = (productIndex: number, accessoryIndex: number) => {
+    const newCart = [...cart];
+    const accessories = [...newCart[productIndex].acessorios];
+    accessories.splice(accessoryIndex, 1);
 
-    const precoBase = typeof novoCarrinho[produtoIndex].produtoBase.preco === 'string'
-      ? Number(novoCarrinho[produtoIndex].produtoBase.preco.replace(/[^\d,]/g, '').replace(',', '.'))
-      : novoCarrinho[produtoIndex].produtoBase.preco;
+    const basePrice = typeof newCart[productIndex].produtoBase.preco === 'string'
+      ? Number(newCart[productIndex].produtoBase.preco.replace(/[^\d,]/g, '').replace(',', '.'))
+      : newCart[productIndex].produtoBase.preco;
 
-    const totalAcessorios = acessorios.reduce((acc, item) => acc + item.preco * item.quantidade, 0);
+    const accessoriesTotal = accessories.reduce((acc, item) => acc + item.preco * item.quantidade, 0);
 
-    novoCarrinho[produtoIndex] = {
-      ...novoCarrinho[produtoIndex],
-      acessorios,
-      total: precoBase + totalAcessorios
+    newCart[productIndex] = {
+      ...newCart[productIndex],
+      acessorios: accessories,
+      total: basePrice + accessoriesTotal
     };
 
-    salvarCarrinho(novoCarrinho);
+    saveCart(newCart);
   };
 
-  const finalizarCompra = () => {
-    alert('Compra finalizada com sucesso!');
+  const checkout = () => {
+    alert('Purchase completed successfully!');
     localStorage.removeItem('carrinhoCompleto');
-    setCarrinho([]);
+    setCart([]);
     navigate('/');
   };
 
-  const voltar = () => {
+  const goBack = () => {
     navigate(-1);
   };
 
-  const totalGeral = carrinho.reduce((acc, item) => acc + item.total, 0);
+  const totalAmount = cart.reduce((acc, item) => acc + item.total, 0);
 
-  if (carrinho.length === 0) {
+  if (cart.length === 0) {
     return (
       <main className={styles.container}>
         <div className={styles.emptyCart}>
-          <img src="https://cdn-icons-png.flaticon.com/512/2038/2038854.png" alt="Carrinho vazio" />
-          <h2>Seu carrinho está vazio</h2>
-          <p>Adicione produtos para visualizar seu pedido aqui.</p>
-          <button onClick={voltar}>Voltar para loja</button>
+          <img src="https://cdn-icons-png.flaticon.com/512/2038/2038854.png" alt="Empty cart" />
+          <h2>Your cart is empty</h2>
+          <p>Add products to see your order here.</p>
+          <button onClick={goBack}>Back to store</button>
         </div>
       </main>
     );
@@ -91,39 +91,39 @@ const Cart: React.FC = () => {
 
   return (
     <main className={styles.container}>
-      <h1 className={styles.TitleSobre_Produtos}>Resumo do Pedido</h1>
+      <h1 className={styles.TitleSobre_Produtos}>Order Summary</h1>
 
-      {carrinho.map((produto, pIndex) => (
+      {cart.map((product, pIndex) => (
         <section className={styles.section} key={pIndex}>
           <div className={styles.topoProduto}>
-            <h2>{produto.produtoBase.nome}</h2>
-            <button className={styles.btnRemoverProduto} onClick={() => removerProduto(pIndex)}>Remover Produto</button>
+            <h2>{product.produtoBase.nome}</h2>
+            <button className={styles.btnRemoverProduto} onClick={() => removeProduct(pIndex)}>Remove Product</button>
           </div>
 
           <div className={styles.card}>
-            <img src={produto.produtoBase.imagem} alt={produto.produtoBase.nome} />
+            <img src={product.produtoBase.imagem} alt={product.produtoBase.nome} />
             <div>
-              <p><strong>Preço base:</strong> {typeof produto.produtoBase.preco === 'string'
-                ? produto.produtoBase.preco
-                : `R$ ${produto.produtoBase.preco.toFixed(2)}`}</p>
-              <p><strong>Total com acessórios:</strong> R$ {produto.total.toLocaleString('pt-BR')}</p>
+              <p><strong>Base price:</strong> {typeof product.produtoBase.preco === 'string'
+                ? product.produtoBase.preco
+                : `$ ${product.produtoBase.preco.toFixed(2)}`}</p>
+              <p><strong>Total with accessories:</strong> $ {product.total.toLocaleString('en-US')}</p>
             </div>
           </div>
 
-          {produto.acessorios.length > 0 && (
+          {product.acessorios.length > 0 && (
             <div className={styles.acessorios}>
-              <h3 >Acessórios:</h3>
+              <h3>Accessories:</h3>
               <ul className={styles.list}>
-                {produto.acessorios.map((item, aIndex) => (
+                {product.acessorios.map((item, aIndex) => (
                   <li key={aIndex} className={styles.cardAcessorio}>
                     <img src={item.imagem} alt={item.nome} />
                     <div>
                       <h4>{item.nome}</h4>
-                      <p>{item.quantidade}x R$ {item.preco.toLocaleString('pt-BR')}</p>
-                      <p><strong>Total:</strong> R$ {(item.quantidade * item.preco).toLocaleString('pt-BR')}</p>
+                      <p>{item.quantidade}x $ {item.preco.toLocaleString('en-US')}</p>
+                      <p><strong>Total:</strong> $ {(item.quantidade * item.preco).toLocaleString('en-US')}</p>
                     </div>
-                    <button className={styles.btnRemoverAcessorio} onClick={() => removerAcessorio(pIndex, aIndex)}>
-                      Remover Acessório
+                    <button className={styles.btnRemoverAcessorio} onClick={() => removeAccessory(pIndex, aIndex)}>
+                      Remove Accessory
                     </button>
                   </li>
                 ))}
@@ -134,13 +134,13 @@ const Cart: React.FC = () => {
       ))}
 
       <section className={styles.total}>
-        <h2>Total Geral</h2>
-        <p>R$ {totalGeral.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</p>
+        <h2>Total</h2>
+        <p>$ {totalAmount.toLocaleString('en-US', { minimumFractionDigits: 2 })}</p>
       </section>
 
       <div className={styles.actions}>
-        <button className={styles.secondary} onClick={voltar}>Voltar</button>
-        <button className={styles.primary} onClick={finalizarCompra}>Finalizar Compra</button>
+        <button className={styles.secondary} onClick={goBack}>Back</button>
+        <button className={styles.primary} onClick={checkout}>Checkout</button>
       </div>
     </main>
   );
