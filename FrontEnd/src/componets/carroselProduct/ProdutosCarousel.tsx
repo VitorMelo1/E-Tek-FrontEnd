@@ -8,9 +8,9 @@ const ProdutosCarousel: React.FC = () => {
   const [page, setPage] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const itemsPerPage = 2;
+  const itemsPerPage = 3;
   const navigate = useNavigate();
-  const slideWidth = 550 + 20;
+  const slideWidth = 400 + 20;
 
   useEffect(() => {
     const fetchProducts = async () => {
