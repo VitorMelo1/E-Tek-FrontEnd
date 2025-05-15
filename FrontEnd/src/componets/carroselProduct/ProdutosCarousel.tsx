@@ -40,7 +40,7 @@ const ProdutosCarousel: React.FC = () => {
 
           const produtoCard: CardProps = {
             tag: produto.tag || '',
-            imagem: produto.image,
+            imagem: `${import.meta.env.VITE_API_URL.replace('/api', '')}${produto.image}`,
             nome: produto.name,
             descricao: descricaoFormatada,
             preco: precoFormatado,
@@ -48,7 +48,7 @@ const ProdutosCarousel: React.FC = () => {
             onBuy: () =>
               navigate('/sobre', {
                 state: {
-                  imagem: produto.image,
+                  imagem: `${import.meta.env.VITE_API_URL.replace('/api', '')}${produto.image}`,
                   nome: produto.name,
                   descricao: descricaoFormatada,
                   preco: precoFormatado,
